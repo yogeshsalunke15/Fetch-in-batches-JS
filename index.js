@@ -1,4 +1,18 @@
 
+let domElement = document.querySelector(".loader");
+
+const customEvent = new Event('fetchDataComplete');
+
+domElement.addEventListener('fetchDataComplete', function (evnt) {
+  console.log(evnt);
+  domElement.style.display = 'none';
+  const h1 = document.querySelector(".dontShow");
+  h1.style.display = 'block';
+
+ }, false);
+
+
+
 /**
  * Run millions of api request in batches.
  * This JS logic helps to hit api in batch of 500 and then next batch of 500
@@ -37,6 +51,8 @@ const getUrlsData = async (data, startIndex, lastIndex) => {
     lastIndex = startIndex + batchOf;
     if(startIndex > urlDataLength ){
       console.log("Array looping Completed !");
+      domElement.dispatchEvent(customEvent);
+      alert("Waaw -- data is ready, please check the console !");
       return;
     }
     const batchData = await getUrlsData(urlsData, startIndex, lastIndex);
@@ -47,3 +63,5 @@ const getUrlsData = async (data, startIndex, lastIndex) => {
   }
 
   fetchBatchOf500();
+
+  
