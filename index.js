@@ -1,8 +1,6 @@
 
 let domElement = document.querySelector(".loader");
-
 const customEvent = new Event('fetchDataComplete');
-
 domElement.addEventListener('fetchDataComplete', function (evnt) {
   console.log(evnt);
   domElement.style.display = 'none';
@@ -10,8 +8,6 @@ domElement.addEventListener('fetchDataComplete', function (evnt) {
   h1.style.display = 'block';
 
  }, false);
-
-
 
 /**
  * Run millions of api request in batches.
@@ -61,7 +57,7 @@ const getUrlsData = async (data, startIndex, lastIndex) => {
     console.log('batchExecutionCount => ', batchExecutionCount);
     setTimeout(fetchBatchOf500, 1000);    
   }
-
+  // calling the batch execution of apis 
   fetchBatchOf500();
 
   
