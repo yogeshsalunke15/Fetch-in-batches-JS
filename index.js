@@ -16,6 +16,7 @@ domElement.addEventListener('fetchDataComplete', function (evnt) {
  * @param {*} lastIndex 
  * @returns 
  */
+let AllData = [];
 const getUrlsData = async (data, startIndex, lastIndex) => {
     const promises = [];
     let promiseCount = 0;
@@ -47,10 +48,12 @@ const getUrlsData = async (data, startIndex, lastIndex) => {
     if(startIndex > urlDataLength ){
       console.log("Array looping Completed !");
       domElement.dispatchEvent(customEvent);
+      console.log(AllData, 'AllData');
       alert("Waaw -- data is ready, please check the console !");
       return;
     }
     const batchData = await getUrlsData(urlsData, startIndex, lastIndex);
+    AllData = [...AllData, ...batchData];
     console.log(batchData, '--batchData--');
     batchExecutionCount += 1;
     console.log('batchExecutionCount => ', batchExecutionCount);
@@ -58,5 +61,4 @@ const getUrlsData = async (data, startIndex, lastIndex) => {
   }
   // calling the batch execution of apis 
   fetchBatchOf500();
-
   
