@@ -2,7 +2,6 @@
 let domElement = document.querySelector(".loader");
 const customEvent = new Event('fetchDataComplete');
 domElement.addEventListener('fetchDataComplete', function (evnt) {
-  console.log(evnt);
   domElement.style.display = 'none';
   const h1 = document.querySelector(".dontShow");
   h1.style.display = 'block';
@@ -55,7 +54,7 @@ const getUrlsData = async (data, startIndex, lastIndex) => {
     console.log(batchData, '--batchData--');
     batchExecutionCount += 1;
     console.log('batchExecutionCount => ', batchExecutionCount);
-    setTimeout(fetchBatchOf500, 1000);    
+    setTimeout(fetchBatchOf500, 500);    
   }
   // calling the batch execution of apis 
   fetchBatchOf500();
