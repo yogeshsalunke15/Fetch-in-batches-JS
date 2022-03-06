@@ -1,6 +1,6 @@
 
 /**
- * This file is demonstrates, how we can write our custom methods for Build in Array Methods
+ * This file demonstrates, how we can write our custom methods for Build in Array Methods
  * 
  */
 
